@@ -1,75 +1,87 @@
- # Yulu-Hypothesis-Testing
+<div align="center">
+  <h1>🚲 Yulu Bike Rental Demand – Hypothesis Testing Analysis</h1>
+  <p><strong>Identifying key factors driving electric cycle rentals in urban India</strong></p>
 
- # Problem Statement
-Yulu is India’s leading micro-mobility platform offering eco-friendly electric cycle rentals for shortdistance
-urban commutes. Recently, the company has experienced a significant dip in revenues and
-wants to identify the factors that influence the demand for its electric cycles.
-To address this, the following business questions need to be answered:
-Which variables significantly influence the demand for electric cycles (e.g., working
-day, weather, season)?
-How do environmental and calendar-based factors (e.g., temperature, season, holidays)
-affect the number of rentals?
-Are there patterns or relationships among the predictors themselves, such as between
-weather and season?
+  <img src="https://socialify.git.ci/ravindrasudha/Yulu-Hypothesis-Testing/image?custom_language=Python&forks=1&issues=1&language=1&logo=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQ7kcOdkec7EPri4XE-Y53kVidR2_XSiOzxaQ%26s&name=1&owner=1&pulls=1&stargazers=1&theme=Light" 
+       alt="Yulu Hypothesis Testing Project Banner" 
+       width="720"/>
 
- # About Yulu
+  <br/>
 
-Yulu is India’s leading micro-mobility service provider, which offers unique vehicles for the daily commute. Starting off as a mission to eliminate traffic congestion in India, Yulu provides the safest commute solution through a user-friendly mobile app to enable shared, solo and sustainable commuting.
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"/>
+  <img src="https://img.shields.io/badge/Seaborn-FF6384?style=for-the-badge&logoColor=white" alt="Seaborn"/>
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib&logoColor=white" alt="Matplotlib"/>
+  <img src="https://img.shields.io/badge/Statistics-4CAF50?style=for-the-badge&logo=google-analytics&logoColor=white" alt="Statistics"/>
+  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter"/>
+  <img src="https://img.shields.io/badge/Last%20Updated-Jul%202025-success?style=for-the-badge" alt="Updated"/>
 
-Yulu zones are located at all the appropriate locations (including metro stations, bus stands, office spaces, residential areas, corporate offices, etc) to make those first and last miles smooth, affordable, and convenient!
+</div>
 
-Yulu has recently suffered considerable dips in its revenues. They have contracted a consulting company to understand the factors on which the demand for these shared electric cycles depends. Specifically, they want to understand the factors affecting the demand for these shared electric cycles in the Indian market.
+<br/>
 
+## 🎯 Problem Statement
 
- # Column Profiling:
-datetime: datetime
-season: season (1: spring, 2: summer, 3: fall, 4: winter)
-holiday: whether day is a holiday or not (extracted from http://dchr.dc.gov/page/holiday-schedule)
-workingday: if day is neither weekend nor holiday is 1, otherwise is 0.
-weather:
-1: Clear, Few clouds, partly cloudy, partly cloudy
-2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
-3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
-4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog
-temp: temperature in Celsius
-atemp: feeling temperature in Celsius
-humidity: humidity
-windspeed: wind speed
-casual: count of casual users
-registered: count of registered users
-count: count of total rental bikes including both casual and registered
+Yulu — India’s leading micro-mobility platform — provides eco-friendly shared electric cycles for short urban commutes. Facing a significant revenue dip, Yulu needs to understand the key drivers of rental demand to optimize fleet allocation, pricing, and marketing.
 
- # Concept Used:
-Bi-Variate Analysis
-2-sample t-test: testing for difference across populations
-ANNOVA
-Chi-square
+**Business Questions**  
+- Which factors (working day, season, weather, etc.) significantly influence the number of rentals?  
+- How do environmental (temperature, weather) and calendar factors (season, holiday) affect demand?  
+- Are there interdependencies among predictors (e.g., weather vs season)?
 
- # Insights:
-• The T-Test for Workingday vs Count has a P-value of 0.2264. Since this is > 0.05,
-we fail to reject the null hypothesis. This means there is no statistically significant
-difference in the average electric cycle demand between working days and non-working days.
-• The ANOVA for Season vs Count has a P-value of 0.0000. Since this is < 0.05, we reject
-the null hypothesis. This means season significantly affects the average electric cycle
-demand.
-• The ANOVA for Weather vs Count has a P-value of 0.0000. Since this is < 0.05, we reject
-the null hypothesis. This means weather significantly affects the average electric cycle
-demand.
-• The Chi-Square test for Season vs Weather has a P-value of 0.0000. Since this is <
-0.05, we reject the null hypothesis. This means weather condition is statistically
-dependent on season.
-Overall Conclusion: Season and weather conditions are significant factors influencing electric
-cycle demand, while the distinction between working and non-working days does not show a statistically
-significant difference in average demand based on this analysis.
+## 🚲 About Yulu
 
-  # Recommendations
-Based on the analysis, here are key recommendations for Yulu:
-• Leverage Seasonality: Increase resources in peak seasons (Fall/Summer), consider promotions
-in off-peak (Spring/Winter).
-• Adapt to Weather: Use dynamic pricing based on weather, efficiently redistribute bikes
-during poor conditions, and communicate with users.
-• Optimize for Commute: Continue focusing on bike availability in commuter areas during
-peak hours.
-• Boost Non-Working Day Use: Analyze weekend patterns and target promotions for
-leisure/recreational rides.
-• Predict Demand: Consider building a model for more precise forecasts and resource planning
+Yulu offers sustainable, app-based shared electric vehicles to reduce traffic congestion and enable convenient first/last-mile connectivity across metro stations, offices, residential areas, and more.
+
+## 📊 Dataset Overview
+
+- Hourly rental records  
+- Key columns:  
+  - `datetime`  
+  - `season` (1=spring, 2=summer, 3=fall, 4=winter)  
+  - `holiday` / `workingday`  
+  - `weather` (1=clear → 4=heavy rain/snow)  
+  - `temp`, `atemp`, `humidity`, `windspeed`  
+  - `casual`, `registered`, `count` (total rentals)
+
+## 🧪 Statistical Techniques Applied
+
+- Bi-variate exploratory analysis (visualizations)  
+- **2-sample T-test** — working day vs non-working day demand  
+- **One-way ANOVA** — season & weather effects on rentals  
+- **Chi-square test of independence** — season vs weather relationship
+
+## 📈 Key Findings
+
+- **Working day**: p-value = 0.2264 (> 0.05) → No statistically significant difference in average rentals  
+- **Season**: ANOVA p-value < 0.0001 → Strong effect (peak in Fall & Summer)  
+- **Weather**: ANOVA p-value < 0.0001 → Clear weather drives highest demand; severe weather reduces it sharply  
+- **Season ↔ Weather**: Chi-square p-value < 0.0001 → Strong dependence (certain weather types more common in specific seasons)
+
+**Conclusion**  
+Season and weather are the primary demand drivers; working-day status adds little explanatory power.
+
+## 💼 Business Recommendations
+
+1. **Seasonal scaling** — Increase fleet & marketing in Summer/Fall; run promotions in Spring/Winter  
+2. **Weather-adaptive operations** — Dynamic pricing, app weather alerts, proactive bike redistribution  
+3. **Commuter focus** — Maintain high availability in office/metro zones year-round  
+4. **Leisure opportunity** — Target weekends/holidays with recreational ride offers  
+5. **Forecasting foundation** — Use season + weather features for predictive demand models
+
+## 🖼️ Visual Highlights
+
+<!-- Upload your plots to /screenshots folder and update paths -->
+
+<div align="center">
+  <img src="https://github.com/ravindrasudha/Yulu-Hypothesis-Testing/raw/main/screenshots/season_vs_count.png" alt="Rentals by Season" width="45%"/>
+  <img src="https://github.com/ravindrasudha/Yulu-Hypothesis-Testing/raw/main/screenshots/weather_vs_count.png" alt="Rentals by Weather" width="45%"/>
+</div>
+
+## 🚀 How to Run
+
+```bash
+git clone https://github.com/ravindrasudha/Yulu-Hypothesis-Testing.git
+cd Yulu-Hypothesis-Testing
+pip install -r requirements.txt
+jupyter notebook Yulu_Hypothesis_Testing.ipynb
